@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gt15core:block/zpm_fusion_preheater_controller"
+    }
+  }
+}

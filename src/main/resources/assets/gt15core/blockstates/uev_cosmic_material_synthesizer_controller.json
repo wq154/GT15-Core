@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gt15core:block/uev_cosmic_material_synthesizer_controller"
+    }
+  }
+}

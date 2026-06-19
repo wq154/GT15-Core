@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gt15core:block/uxv_stellar_forge_controller"
+    }
+  }
+}

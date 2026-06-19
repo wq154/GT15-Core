@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gt15core:block/void_resource_anchor"
+    }
+  }
+}

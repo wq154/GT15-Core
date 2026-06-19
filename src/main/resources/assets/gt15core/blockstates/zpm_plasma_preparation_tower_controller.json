@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gt15core:block/zpm_plasma_preparation_tower_controller"
+    }
+  }
+}

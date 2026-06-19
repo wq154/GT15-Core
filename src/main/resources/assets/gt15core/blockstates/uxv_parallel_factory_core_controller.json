@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gt15core:block/uxv_parallel_factory_core_controller"
+    }
+  }
+}

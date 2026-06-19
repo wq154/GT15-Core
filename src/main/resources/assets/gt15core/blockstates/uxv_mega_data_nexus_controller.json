@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gt15core:block/uxv_mega_data_nexus_controller"
+    }
+  }
+}

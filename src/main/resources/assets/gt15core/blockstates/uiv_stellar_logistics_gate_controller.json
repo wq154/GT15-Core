@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gt15core:block/uiv_stellar_logistics_gate_controller"
+    }
+  }
+}

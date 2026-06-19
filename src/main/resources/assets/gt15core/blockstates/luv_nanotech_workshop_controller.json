@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gt15core:block/luv_nanotech_workshop_controller"
+    }
+  }
+}

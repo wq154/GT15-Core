@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gt15core:block/zpm_quantum_circuit_assembly_controller"
+    }
+  }
+}

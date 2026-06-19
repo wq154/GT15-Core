@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gt15core:block/mv_screening_yard_controller"
+    }
+  }
+}

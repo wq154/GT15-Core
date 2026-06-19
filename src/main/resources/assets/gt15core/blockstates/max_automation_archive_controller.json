@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gt15core:block/max_automation_archive_controller"
+    }
+  }
+}

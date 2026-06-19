@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gt15core:block/hv_petrochemical_workshop_controller"
+    }
+  }
+}

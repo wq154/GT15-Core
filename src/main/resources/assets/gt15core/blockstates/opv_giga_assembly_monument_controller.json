@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gt15core:block/opv_giga_assembly_monument_controller"
+    }
+  }
+}
