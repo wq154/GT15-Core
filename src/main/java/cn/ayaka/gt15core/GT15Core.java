@@ -8,16 +8,19 @@ import cn.ayaka.gt15core.item.IOBlueprintItem;
 import cn.ayaka.gt15core.item.MaintenanceKitItem;
 import cn.ayaka.gt15core.item.OrderBridgeCardItem;
 import cn.ayaka.gt15core.item.PatternMultiplierCardItem;
+import cn.ayaka.gt15core.menu.GT15DiagnosticMenu;
 import cn.ayaka.gt15core.multiblock.ControllerSpec;
 import cn.ayaka.gt15core.multiblock.MultiblockControllerBlock;
 import cn.ayaka.gt15core.multiblock.MultiblockControllerBlockEntity;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.extensions.IForgeMenuType;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -32,6 +35,7 @@ public class GT15Core {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, MOD_ID);
+    public static final DeferredRegister<MenuType<?>> MENU_TYPES = DeferredRegister.create(ForgeRegistries.MENU_TYPES, MOD_ID);
 
     private static BlockBehaviour.Properties controllerProps() {
         return BlockBehaviour.Properties.of()
@@ -281,11 +285,15 @@ public class GT15Core {
                     CREATIVE_COMPLIANCE_CORE.get()
             ).build(null));
 
+    public static final RegistryObject<MenuType<GT15DiagnosticMenu>> DIAGNOSTIC_MENU = MENU_TYPES.register("diagnostic",
+            () -> IForgeMenuType.create(GT15DiagnosticMenu::new));
+
     public GT15Core() {
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
         ITEMS.register(modBus);
         BLOCKS.register(modBus);
         BLOCK_ENTITY_TYPES.register(modBus);
+        MENU_TYPES.register(modBus);
         MinecraftForge.EVENT_BUS.addListener(this::onRegisterCommands);
     }
 
