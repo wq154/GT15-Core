@@ -2,6 +2,7 @@ package cn.ayaka.gt15core;
 
 import cn.ayaka.gt15core.command.GT15CoreCommands;
 import cn.ayaka.gt15core.block.FactoryAssistBlock;
+import cn.ayaka.gt15core.block.FactoryAssistBlockEntity;
 import cn.ayaka.gt15core.item.BatchPartsCardItem;
 import cn.ayaka.gt15core.item.IOBlueprintItem;
 import cn.ayaka.gt15core.item.MaintenanceKitItem;
@@ -9,11 +10,13 @@ import cn.ayaka.gt15core.item.OrderBridgeCardItem;
 import cn.ayaka.gt15core.item.PatternMultiplierCardItem;
 import cn.ayaka.gt15core.multiblock.ControllerSpec;
 import cn.ayaka.gt15core.multiblock.MultiblockControllerBlock;
+import cn.ayaka.gt15core.multiblock.MultiblockControllerBlockEntity;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -28,6 +31,7 @@ public class GT15Core {
     public static final String MOD_ID = "gt15core";
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, MOD_ID);
 
     private static BlockBehaviour.Properties controllerProps() {
         return BlockBehaviour.Properties.of()
@@ -230,10 +234,58 @@ public class GT15Core {
     public static final RegistryObject<Item> MAX_LIGHTTECH_ASCENSION_CORE_CONTROLLER_ITEM = ITEMS.register("max_lighttech_ascension_core_controller",
             () -> new BlockItem(MAX_LIGHTTECH_ASCENSION_CORE_CONTROLLER.get(), new Item.Properties()));
 
+    public static final RegistryObject<BlockEntityType<MultiblockControllerBlockEntity>> MULTIBLOCK_CONTROLLER_BE = BLOCK_ENTITY_TYPES.register("multiblock_controller",
+            () -> BlockEntityType.Builder.of(MultiblockControllerBlockEntity::new,
+                    LV_COMPACT_WORKSHOP_CONTROLLER.get(),
+                    MV_SCREENING_YARD_CONTROLLER.get(),
+                    HV_OIL_DISTILLATION_TOWER_CONTROLLER.get(),
+                    HV_PETROCHEMICAL_WORKSHOP_CONTROLLER.get(),
+                    EV_CLEANROOM_WAFER_LINE_CONTROLLER.get(),
+                    IV_VACUUM_FREEZING_TOWER_CONTROLLER.get(),
+                    AE2_GT_ORDER_BRIDGE_CONTROLLER.get(),
+                    LUV_PRECIOUS_METAL_REFINERY_CONTROLLER.get(),
+                    LUV_NANOTECH_WORKSHOP_CONTROLLER.get(),
+                    ZPM_PLASMA_PREPARATION_TOWER_CONTROLLER.get(),
+                    ZPM_FUSION_PREHEATER_CONTROLLER.get(),
+                    ZPM_QUANTUM_CIRCUIT_ASSEMBLY_CONTROLLER.get(),
+                    UV_FUSION_INDUSTRIALIZER_CONTROLLER.get(),
+                    UV_EXTREME_ORE_PROCESSOR_CONTROLLER.get(),
+                    UV_SPACE_MATERIAL_FOUNDRY_CONTROLLER.get(),
+                    UHV_DIMENSION_RESOURCE_MATRIX_CONTROLLER.get(),
+                    UHV_DATA_WAFER_FAB_CONTROLLER.get(),
+                    UHV_VOID_MINER_CONTROLLER.get(),
+                    UEV_ANTIMATTER_CONDENSER_CONTROLLER.get(),
+                    UEV_COSMIC_MATERIAL_SYNTHESIZER_CONTROLLER.get(),
+                    UEV_ORDER_SUPERCOMPUTER_CONTROLLER.get(),
+                    UIV_DEEP_SPACE_CHEMICAL_PLANT_CONTROLLER.get(),
+                    UIV_ULTIMATE_ENERGY_NEXUS_CONTROLLER.get(),
+                    UIV_STELLAR_LOGISTICS_GATE_CONTROLLER.get(),
+                    UXV_PARALLEL_FACTORY_CORE_CONTROLLER.get(),
+                    UXV_STELLAR_FORGE_CONTROLLER.get(),
+                    UXV_MEGA_DATA_NEXUS_CONTROLLER.get(),
+                    OPV_OMNIVERSAL_RESOURCE_LATTICE_CONTROLLER.get(),
+                    OPV_GIGA_ASSEMBLY_MONUMENT_CONTROLLER.get(),
+                    OPV_FACTORY_GOVERNOR_CONTROLLER.get(),
+                    MAX_CREATIVE_PROVING_GROUND_CONTROLLER.get(),
+                    MAX_AUTOMATION_ARCHIVE_CONTROLLER.get(),
+                    MAX_LIGHTTECH_ASCENSION_CORE_CONTROLLER.get()
+            ).build(null));
+
+    public static final RegistryObject<BlockEntityType<FactoryAssistBlockEntity>> FACTORY_ASSIST_BE = BLOCK_ENTITY_TYPES.register("factory_assist",
+            () -> BlockEntityType.Builder.of(FactoryAssistBlockEntity::new,
+                    ORDER_CACHE_BANK.get(),
+                    PATTERN_ROUTER_NODE.get(),
+                    ENERGY_FAILSAFE_RELAY.get(),
+                    VOID_RESOURCE_ANCHOR.get(),
+                    PARALLEL_FACTORY_FRAME.get(),
+                    CREATIVE_COMPLIANCE_CORE.get()
+            ).build(null));
+
     public GT15Core() {
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
         ITEMS.register(modBus);
         BLOCKS.register(modBus);
+        BLOCK_ENTITY_TYPES.register(modBus);
         MinecraftForge.EVENT_BUS.addListener(this::onRegisterCommands);
     }
 
